@@ -1,14 +1,40 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>My Blog!</title>
+    {#  https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.css  #}
+    <link rel="stylesheet" href="{% static 'css/semantic.css' %}" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-    <h1><a href="{% url 'blog:edit_page' 0 %}">新文章</a> </h1>
-    {% for article in  articles %}
-        <a href="{% url 'blog:article_page' article.id %}">{{ article.title }}</a>
-        <br/>
-    {% endfor %}
+    <div class="ui inverted vertical  segment">
+        <div class="ui image">
+            <img src="{% static 'images/banner.jpg' %}" alt="" />
+        </div>
+    </div>
+
+
+    <div>
+        <h1><a href="{% url 'blog:edit_page' 0 %}" class="ui container">写文章</a> </h1>
+        {% for article in  articles %}
+
+            <div class="ui container segment">
+                <h2 class="ui header">{{ article.title }}</h2>
+                <p style="height: 60px; overflow: hidden; text-overflow: ellipsis;">
+                    {{ article.content }}
+                </p>
+                <a href="{% url 'blog:article_page' article.id %}">
+                     <button type="button" name="button" class="ui inverted blue button">Read more</button>
+                </a>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+    <div class="ui inverted  vertical very padded  segment">
+            KDX_Coder®
+    </div>
 </body>
 </html>

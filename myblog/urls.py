@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include(('blog.urls', 'blog'), namespace=None)),
     path('home/', include('home.urls')),
 ]
+#设置静态文件路径
+urlpatterns += staticfiles_urlpatterns()
