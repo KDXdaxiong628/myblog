@@ -40,5 +40,5 @@ def edit_action(request):
     article.title = title
     article.content = content
     article.save()
-    # 返回原先的博客详情页-
+    # 返回原先的博客详情页
     return HttpResponseRedirect('/blog/article/%s' % str(article.id))  #render(request, 'blog/article_page.html', {'article': article})
